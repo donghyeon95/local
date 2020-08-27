@@ -19,7 +19,7 @@ login = LoginView.as_view(
 
 
 logout = LogoutView.as_view(
-    next_page=settings.LOGIN_URL,
+    next_page='/app',
 )
 
 
