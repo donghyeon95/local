@@ -435,8 +435,9 @@ See https://github.com/adobe-type-tools/cmap-resources
                   button.setAttribute('id', 'search_button');
                   button.setAttribute('class', "btn btn-primary");
                   button.setAttribute('value', '검색');
-                  button.setAttribute('form', 'myform');
-                  button.setAttribute('onclick', 'goPost()');
+                  button.onclick= function(){
+                    document.getElementById("myform").submit();  
+                  }
 
                   if(a == ''){
                     button.parentNode.removeChild(button);
@@ -444,12 +445,14 @@ See https://github.com/adobe-type-tools/cmap-resources
 
                   else{
                     document.getElementById("text_box").appendChild( button );
+                    
                   }
-                
+                 
+                  
                 }
-                function goPost(){
-                  document.getElementById("myform").submit();
-                }
+                // function goPost(){
+                //   document.getElementById("myform").submit();
+                // }
             </script>
             <!--
           {% if text_box.value %}
