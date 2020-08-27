@@ -408,8 +408,9 @@ See https://github.com/adobe-type-tools/cmap-resources
          <nav class="navbar">
          <div id="printContainer"></div>
           <form id = myform action="."  method="POST"> {% csrf_token %}
-            <input type = "hidden" name= "search" id="search" value =""  >    </form>
-           
+            <input type = "hidden" name= "search" id="search" value =""  >    
+            <button type ="submit" id="search_button" class = "btn btn-primary">검색</button>
+          </form>
               <!-- <input type = "submit">-->
               <script>
                 function selectText() {
@@ -427,37 +428,37 @@ See https://github.com/adobe-type-tools/cmap-resources
                 document.onmouseup = function() {
                   document.getElementById("text_box").innerHTML = selectText();
                   document.getElementById('search').value = selectText();
-                  create(document.getElementById('search').value);
+                 // create(document.getElementById('search').value);
                 }
-                function create(a){
-                  var button = document.createElement( 'input' );
-                  button.setAttribute('type', 'submit');
-                  button.setAttribute('id', 'search_button');
-                  button.setAttribute('class', "btn btn-primary");
-                  button.setAttribute('value', '검색');
-                  button.onclick= function(){
-                    document.getElementById("myform").submit();  
-                  }
+                // function create(a){
+                //   var button = document.createElement( 'input' );
+                //   button.setAttribute('type', 'submit');
+                //   button.setAttribute('id', 'search_button');
+                //   button.setAttribute('class', "btn btn-primary");
+                //   button.setAttribute('value', '검색');
+                //   button.onclick= function(){
+                //     document.getElementById("myform").submit();  
+                //   }
 
-                  if(a == ''){
-                    button.parentNode.removeChild(button);
-                  }
+                //   if(a == ''){
+                //     button.parentNode.removeChild(button);
+                //   }
 
-                  else{
-                    document.getElementById("text_box").appendChild( button );
+                //   else{
+                //     document.getElementById("text_box").appendChild( button );
                     
-                  }
+                //   }
                  
                   
-                }
+                // }
                 // function goPost(){
                 //   document.getElementById("myform").submit();
                 // }
             </script>
             <!--
-          {% if text_box.value %}
-            <button type ="submit" id="search_button" class = "btn btn-primary">검색</button>
-          {%else}
+          {% if text_box.value %}-->
+           
+            <!--{%else}
             <a href="{% url 'login' %}" class="btn btn-outline-danger">로그인</a>
             <a href="{% url 'signup' %}" class="btn btn-danger">회원가입</a>
           {% endif %}
