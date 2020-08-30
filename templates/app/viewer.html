@@ -400,70 +400,87 @@ See https://github.com/adobe-type-tools/cmap-resources
 
     </div> <!-- outerContainer -->
     <div id="TextContainer">
-      <div id="text_box">
+      <nav class="navbar">
+        <div id="printContainer"></div>
+       
+         <form id = myform action="."  method="POST"> {% csrf_token %}
+           <input type= "text" name="title" id = "title" value="">
+           <input type = "hidden" name= "search" id="search" value =""  >
+           <button type ="submit" id="search_button" class = "btn btn-primary">검★색</button>
+         </form>
 
-      </div>
-      		
-         </div> <!-- TextContainer -->
-         <nav class="navbar">
-         <div id="printContainer"></div>
-          <form id = myform action="."  method="POST"> {% csrf_token %}
-            <input type = "hidden" name= "search" id="search" value =""  >    
-            <button type ="submit" id="search_button" class = "btn btn-primary">검색</button>
-          </form>
-              <!-- <input type = "submit">-->
-              <script>
-                function selectText() {
-
-                  var selectionText = "";
-                  if (document.getSelection) {
-                      selectionText = document.getSelection();
-                  } else if (document.selection) {
-                      selectionText = document.selection.createRange().text;
-                  }
-                  return selectionText;
-                  }
-
-
-                document.onmouseup = function() {
-                  document.getElementById("text_box").innerHTML = selectText();
-                  document.getElementById('search').value = selectText();
-                 // create(document.getElementById('search').value);
-                }
-                // function create(a){
-                //   var button = document.createElement( 'input' );
-                //   button.setAttribute('type', 'submit');
-                //   button.setAttribute('id', 'search_button');
-                //   button.setAttribute('class', "btn btn-primary");
-                //   button.setAttribute('value', '검색');
-                //   button.onclick= function(){
-                //     document.getElementById("myform").submit();  
-                //   }
-
-                //   if(a == ''){
-                //     button.parentNode.removeChild(button);
-                //   }
-
-                //   else{
-                //     document.getElementById("text_box").appendChild( button );
-                    
-                //   }
-                 
-                  
-                // }
-                // function goPost(){
-                //   document.getElementById("myform").submit();
-                // }
-            </script>
-            <!--
-          {% if text_box.value %}-->
+     
+             <!-- <input type = "submit">-->
+             <script>
+               fetch('/app/result').then(function(response){
+                 response.text().then(function(text){
+                   document.querySelector('article').innerHTML = text;  
+                 })
+               })
+       
            
-            <!--{%else}
-            <a href="{% url 'login' %}" class="btn btn-outline-danger">로그인</a>
-            <a href="{% url 'signup' %}" class="btn btn-danger">회원가입</a>
-          {% endif %}
-            -->
+              function selectText() {
+                var selectionText = "";
+                 if (document.getSelection) {
+                     selectionText = document.getSelection();
+                 } else if (document.selection) {
+                     selectionText = document.selection.createRange().text;
+                 }
+                  return selectionText;
+              }
+              document.onmouseup = function() {
+                 document.getElementById("text_box").innerHTML = selectText();
+                 document.getElementById('search').value = selectText();
+                 document.getElementById('title').value = document.body.childNodes[3].childNodes[5].childNodes[13].childNodes[1].textContent;
+              }
+               // function create(a){
+               //   var button = document.createElement( 'input' );
+               //   button.setAttribute('type', 'submit');
+               //   button.setAttribute('id', 'search_button');
+               //   button.setAttribute('class', "btn btn-primary");
+               //   button.setAttribute('value', '검색');
+               //   button.onclick= function(){
+               //     document.getElementById("myform").submit();  
+               //   }
 
-  </nav>
+               //   if(a == ''){
+               //     button.parentNode.removeChild(button);
+               //   }
+
+               //   else{
+               //     document.getElementById("text_box").appendChild( button );
+                   
+               //   }
+                
+                 
+               // }
+               // function goPost(){
+               //   document.getElementById("myform").submit();
+               // }
+           </script>
+           <!--
+         {% if text_box.value %}-->
+          
+           <!--{%else}
+           <a href="{% url 'login' %}" class="btn btn-outline-danger">로그인</a>
+           <a href="{% url 'signup' %}" class="btn btn-danger">회원가입</a>
+         {% endif %}
+           -->
+
+ </nav>
+ <div id="btm_pt">
+  <div  id="text_box"></div>
+  <footer id= "fooc">
+    <div class ="container"><article></article></div>
+  </footer>
+
+  
+ </div>
+    
+         </div> <!-- TextContainer -->
+   
+
+     
+         
   </body>
 </html>

@@ -13,6 +13,13 @@
  * limitations under the License.
  */
 
+ #btm_pt{
+  height:100%;
+ }
+
+ #fooc {
+   float:bottom;
+ }
 
  .textLayer {
   position: absolute;
@@ -551,10 +558,11 @@ select {
   float: left;
 }
 
-#TextContiner {
-  width: 20%;
+#TextContainer {
+  width: 30%;
   height: 100%;
   float: right;
+  overflow: scroll;
 }
 
 #sidebarContainer {

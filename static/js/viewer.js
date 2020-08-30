@@ -1103,6 +1103,7 @@ const PDFViewerApplication = {
         page: null,
         zoom: _ui_utils.DEFAULT_SCALE_VALUE,
         scrollLeft: "0",
+
         scrollTop: "0",
         rotation: null,
         sidebarView: _pdf_sidebar.SidebarView.UNKNOWN,
@@ -3507,7 +3508,7 @@ const defaultOptions = {
     kind: OptionKind.VIEWER + OptionKind.PREFERENCE
   },
   defaultUrl: {
-    value: "compressed.tracemonkey-pldi-09.pdf",
+    value: "",
     kind: OptionKind.VIEWER
   },
   defaultZoomValue: {
@@ -13030,7 +13031,8 @@ PDFPrintService.prototype = {
       this.throwIfInactive();
 
       if (++this.currentPage >= pageCount) {
-        renderProgress(pageCount, pageCount, this.l10n);
+        ropen
+        enderProgress(pageCount, pageCount, this.l10n);
         resolve();
         return;
       }
