@@ -404,8 +404,15 @@ See https://github.com/adobe-type-tools/cmap-resources
     <div id="TextContainer">
       <nav class="navbar">
         <div id="printContainer"></div>
+
+          <form id= 'input_data' action = "{% url 'app:post_data' %}" method="POST">{% csrf_token %}
+            title: <input type= "text"  name="title_data" id="title_data" >
+            category: <input type= "text"  name="category" id="category" value ="">
+            <button type = "submit" id="post_data" class = "btn btn-primary">제출</button>
+          
+          </form>
        
-         <form id = myform action="."  method="POST"> {% csrf_token %}
+         <form id = 'myform' action="."  method="POST"> {% csrf_token %}
            <input type= "hidden" name="title" id = "title" value="">
            <input type = "text" name= "search" id="search" value =""  >
            <input type ="button" id="search_button" value ="검색" class = "btn btn-primary" ></input>

@@ -2,6 +2,7 @@ import json
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
+from . import search
 
 def index(request):
     return render(request, 'app/index.html')
@@ -30,12 +31,6 @@ def pdf_view(request):
 def post_result(request):
     if request.method == 'POST':
         keyword = request.POST.get('search_key', None)
-        print(keyword)#it is None!!!!!
-
-        message = "임시 데이터. 적절하게 수정할 필요가 있다."
-
-        context = {'secret_key': message }
-
         keywords={'keyword': keyword}
         # return render(request, 'app/viewer.html', keyword)
         # return HttpResponse(keyword)
@@ -45,9 +40,12 @@ def post_result(request):
 
         context = {'secret_key': message }
         return JsonResponse(context)
-#def searchText(request):
-#   if request.method == 'GET':
-#        pass
-#    elif request.method == 'POST':
+
+
+@csrf_exempt
+def post_data(request):
+    if request.method == 'POST':
+        data = request.POST.get('title_data', None)
+        return HttpResponse(data)
         
         

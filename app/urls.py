@@ -8,5 +8,6 @@ urlpatterns = [
             path('', views.index, name ='index'),
             path('viewer/', views.pdf_view, name ='pdf_view'),
             # path('result/', views.result, name = 'result'),
-            path('request', views.post_result, name='post_result')
+            path('request', views.post_result, name='post_result'),
+            path('post_data', views.post_data, name ='post_data'),
 ]
