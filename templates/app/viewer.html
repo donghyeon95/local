@@ -480,15 +480,15 @@ See https://github.com/adobe-type-tools/cmap-resources
           // alert(JSON.stringify(a));  
          
           alert('haid');
-          var txt = JSON.stringify(keyword);
+          var txt = JSON.parse(JSON.stringify(keyword));
           //var txt = JSON.parse(keyword);
-          alert(txt);
+          alert(txt['keyword']);
           //  document.getElementById('container_tkqwlf').innerHTML = "ttx.keyword";
-          $("#container_tkqwlf").html(txt).appendTo("body");
+          $("#container_tkqwlf").html(txt['keyword']).prependTo("container_tkqwlf");
           //  document.getElementbyId("container").html("제발 되자 진짜.<br>")
           //  .append (JSON.stringify(keyword)); 
           alert('haahahahahahahahaha');
-        }, 
+        },
         error: function(request, status, error) {
             alert(error); 
         }
