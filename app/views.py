@@ -29,9 +29,12 @@ def pdf_view(request):
 def post_result(request):
     # success  to POST data
     if request.method == 'POST':
-        keyword = request.POST.get('search_key', None)
-        keywords={'keyword': keyword}
-        print(keywords['keyword'])
+        title = request.POST.get('search_title', None)
+        content = request.POST.get('search_content', None)
+        
+        #keywords = search.searchDataContent(title,content)
+
+
         return JsonResponse(keywords)
     # Fail to POST data
     else:

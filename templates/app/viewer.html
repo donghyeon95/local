@@ -425,15 +425,17 @@ See https://github.com/adobe-type-tools/cmap-resources
      {% endblock %}
 
       <nav class="navbar">
-    
-       <!-- 여기를 꾸밉시다. -->
+
+      <!-- 여기를 꾸밉시다. -->
          <form id = 'myform' action="."  method="POST"> {% csrf_token %}
            <input type= "hidden" name="title" id = "title" value="">
            <input type = "text" name= "search" id="search" value =""  >
+           content: <input type= "text" name="content_data" id="content_data" value="">
+
            <input type ="button" id="search_button" value ="검색" class = "btn btn-primary" ></input>
          </form>
 
- </nav>
+     </nav>
 
  <div id="btm_pt">
 
@@ -476,16 +478,21 @@ See https://github.com/adobe-type-tools/cmap-resources
   }
      document.getElementById("search_button").addEventListener("click", function(){
      
-      var search_key = document.getElementById("search").value;
+      var search_title = document.getElementById("search").value;
+      var search_content = document.getElementById("content_data").value;
       alert(search_key);
       $.ajax({ 
         type: "POST",
         url: '/app/request', 
-        data : ({'search_key': search_key})
+        data : ({
+          'search_key': search_title,
+          'search_content': search_content
+        })
         , 
         success:function(keyword){ 
           var txt = JSON.parse(JSON.stringify(keyword));
-          $("#container_search").html(txt['keyword']).prependTo("container_searcn");
+          $("#container_search").html(txt[0][hits['title']).prependTo("container_searcn");
+          $("#container_search").html(txt['content']).prependTo("container_searcn");
         },
         error: function(request, status, error) {
             alert(error); 
